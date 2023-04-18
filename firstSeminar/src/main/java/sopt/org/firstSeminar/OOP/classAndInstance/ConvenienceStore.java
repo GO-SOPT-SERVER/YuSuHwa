@@ -71,11 +71,28 @@ public class ConvenienceStore {
     //총 매출
     private int totalSales;
 
+    //생성자란? : 객체를 생성하는 메소드, new 연산자로 클래스 인스턴스를 생성시 가장 먼저 호출되는 메서드
+
+    // 잠깐! 생성자도 오버로딩 되나요? -> 됩니다.
     public ConvenienceStore(String brand, String address, int staffCount, int totalSales){
         this.brand=brand;
         this.address=address;
         this.staffCount=staffCount;
         this.totalSales=totalSales;
+    }
+
+    public ConvenienceStore(String brand, String address){
+        this.brand=brand;
+        this.address=address;
+        this.staffCount=1;
+        this.totalSales=1;
+    }
+
+    public ConvenienceStore(String brand, String address, int staffCount){
+        this.brand=brand;
+        this.address=address;
+        this.staffCount=staffCount;
+        this.totalSales=1;
     }
 
     public void addStaffCount(){
@@ -111,5 +128,12 @@ public class ConvenienceStore {
         familyMart.addTotalSales();
 
         familyMart.printConvenienceStoreInfo();
+
+        ConvenienceStore familyMart2 = new ConvenienceStore("7-11","gondDUK",4);
+        familyMart2.printConvenienceStoreInfo();
+
+        ConvenienceStore familyMart3 = new ConvenienceStore("7-11","gondDUK");
+        familyMart3.printConvenienceStoreInfo();
+
     }
 }

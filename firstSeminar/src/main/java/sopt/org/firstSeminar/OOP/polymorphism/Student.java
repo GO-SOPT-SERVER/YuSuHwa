@@ -1,10 +1,15 @@
 package sopt.org.firstSeminar.OOP.polymorphism;
-
 import sopt.org.firstSeminar.OOP.abstraction.Person;
+public class Student  extends Person {
+    public Student(int age, String name, String species,String gender, boolean isMarried){
+        super(age,name,species,gender,isMarried);
 
-public class Student extends Person {
-    @Override
-    public void walk(){
-        System.out.println("학교를 향해 걷는다.");
     }
+    @Override
+    public void work(){
+        System.out.println("학생은 공부한다.");
+    }
+
+
+
 }
