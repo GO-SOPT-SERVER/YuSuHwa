@@ -18,9 +18,24 @@ public class User {
         this.contact = contact;
         this.age = age;
     }
+
+    //임시객체.....용 생성자...
+    // 의미없다
+    /*
+    public User(String name){
+        this.id = -1;
+        this.gender = "unknown";
+        this.name=name;
+        this.contact = "unknown";
+    }
+    */
+
+
     public void setId(Long id) {
         this.id = id;
     }
+
+
 
     @Override
     public String toString() {
@@ -34,14 +49,19 @@ public class User {
     //왜 재정의하느냐....
     // List의 contains() 메소드와 indexOf() 메소드는 List안에 값이 같으면 true를 리턴하는데
     // 이때 '값이 같으면'이 List안의 객체의 equals 메소드를 실행시켜 확인하기 때문
+    // +) 의미없다~
+    /*
     @Override
     public boolean equals(Object o){
-        System.out.println("1단계");
         if(o instanceof String && this.name.equals(o) ){
-            System.out.println("2단계");
+            return true;
+
+        }
+        if(o instanceof User && this.name.equals(((User) o).name)){
             return true;
 
         }
         return false;
     }
+     */
 }
