@@ -17,4 +17,12 @@ public class Post {
     }
 
     public void setId(Long id){ this.id=id;}
+
+    @Override
+    public String toString(){
+        return "id: " + this.id + "\n" +
+                "title: " + this.title + "\n" +
+                "content: " + this.content + "\n" +
+                "userName : " + this.user.getName();
+    }
 }

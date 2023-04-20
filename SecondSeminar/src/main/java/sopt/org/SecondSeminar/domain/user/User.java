@@ -30,4 +30,18 @@ public class User {
                 "contact: " + this.contact + "\n" +
                 "age: " + this.age;
     }
+
+    //왜 재정의하느냐....
+    // List의 contains() 메소드와 indexOf() 메소드는 List안에 값이 같으면 true를 리턴하는데
+    // 이때 '값이 같으면'이 List안의 객체의 equals 메소드를 실행시켜 확인하기 때문
+    @Override
+    public boolean equals(Object o){
+        System.out.println("1단계");
+        if(o instanceof String && this.name.equals(o) ){
+            System.out.println("2단계");
+            return true;
+
+        }
+        return false;
+    }
 }

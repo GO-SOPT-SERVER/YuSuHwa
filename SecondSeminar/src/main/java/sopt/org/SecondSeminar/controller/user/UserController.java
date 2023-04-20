@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sopt.org.SecondSeminar.controller.user.dto.request.RegisterRequestDto;
+import sopt.org.SecondSeminar.controller.user.dto.request.UserRegisterRequestDto;
 import lombok.RequiredArgsConstructor;
 import sopt.org.SecondSeminar.service.user.UserService;
 import static sopt.org.SecondSeminar.SecondSeminarApplication.userList;
@@ -18,7 +18,7 @@ public class UserController {
 
     private final UserService userService;
     @PostMapping("/user")
-    public String register(@RequestBody final RegisterRequestDto request) { //final 하는 이유 : 상수화를 통해 들어오는 정보의 변형을 막음
+    public String register(@RequestBody final UserRegisterRequestDto request) { //final 하는 이유 : 상수화를 통해 들어오는 정보의 변형을 막음
 
 
         // 서비스 계층에 유저를 등록하는 메서드를 호출

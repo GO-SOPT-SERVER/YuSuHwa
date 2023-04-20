@@ -1,7 +1,7 @@
 package sopt.org.SecondSeminar.service.user;
 
 import org.springframework.stereotype.Service;
-import sopt.org.SecondSeminar.controller.user.dto.request.RegisterRequestDto;
+import sopt.org.SecondSeminar.controller.user.dto.request.UserRegisterRequestDto;
 import sopt.org.SecondSeminar.domain.user.User;
 
 import static sopt.org.SecondSeminar.SecondSeminarApplication.userList;
@@ -9,7 +9,7 @@ import static sopt.org.SecondSeminar.SecondSeminarApplication.userList;
 
 @Service
 public class UserService {
-    public Long register(RegisterRequestDto request) {
+    public Long register(UserRegisterRequestDto request) {
 
         // 받아온 request 데이터를 토대로 실제 User 객체 생성
         User newUser = new User(
