@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import sopt.org.ThirdAdvancedAssignment.common.dto.ApiResponseDto;
 import sopt.org.ThirdAdvancedAssignment.controller.dto.request.PostCreatRequestDto;
+import sopt.org.ThirdAdvancedAssignment.exception.SuccessStatus;
 import sopt.org.ThirdAdvancedAssignment.service.PostService;
-
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.PostCreateResponseDto;
 import javax.validation.Valid;
 
 @RestController
@@ -19,12 +21,9 @@ public class PostController {
 
     @PostMapping("/post")
     @ResponseStatus(HttpStatus.CREATED)
-    public Long createPost(@RequestBody @Valid final PostCreatRequestDto request){
-        System.out.println("게시글 생성 컨트롤러");
+    public ApiResponseDto<PostCreateResponseDto> createPost(@RequestBody @Valid final PostCreatRequestDto request){
 
-        System.out.println(request.toString());
-
-        return postService.creatPost(request);
+        return ApiResponseDto.success(SuccessStatus.CREATEPOST_SUCCESS,postService.creatPost(request));
     }
 
 }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sopt.org.ThirdAdvancedAssignment.controller.dto.request.PostCreatRequestDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.PostCreateResponseDto;
 import sopt.org.ThirdAdvancedAssignment.domain.Post;
 import sopt.org.ThirdAdvancedAssignment.domain.User;
 import sopt.org.ThirdAdvancedAssignment.infrastructure.PostRepository;
@@ -25,7 +26,7 @@ public class PostService {
         this.postRepository=postRepository;
     }
     @Transactional
-    public Long creatPost(PostCreatRequestDto request){
+    public PostCreateResponseDto creatPost(PostCreatRequestDto request){
         User user = userRepository.findById(request.getUserId());
 
        Post post = Post.builder()
@@ -35,7 +36,7 @@ public class PostService {
                .build();
 
        postRepository.save(post);
-       return post.getId();
+       return PostCreateResponseDto.of(post.getId(), post.getTitle(), post.getContent(), post.getUser().getId(),post.getUser().getNickname());
     }
 
 }
