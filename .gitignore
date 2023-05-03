@@ -1,4 +1,7 @@
+
+### 설정 파일들 ###
 /**/src/main/resources/application.properties
+/**/src/main/resources/application.yaml
 
 
 ### IntelliJ IDEA ###
