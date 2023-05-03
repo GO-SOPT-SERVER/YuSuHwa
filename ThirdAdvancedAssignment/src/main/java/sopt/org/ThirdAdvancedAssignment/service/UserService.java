@@ -3,9 +3,9 @@ package sopt.org.ThirdAdvancedAssignment.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.request.UserCreateRequestDto;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.response.UserCreateResponseDto;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.response.UserGetResponseDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.request.user.UserCreateRequestDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.user.UserCreateResponseDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.user.UserGetResponseDto;
 import sopt.org.ThirdAdvancedAssignment.domain.User;
 import sopt.org.ThirdAdvancedAssignment.infrastructure.UserRepository;
 

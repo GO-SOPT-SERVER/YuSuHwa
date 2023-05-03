@@ -3,8 +3,8 @@ package sopt.org.ThirdAdvancedAssignment.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.request.UserCreateRequestDto;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.response.UserGetResponseDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.request.user.UserCreateRequestDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.user.UserGetResponseDto;
 import sopt.org.ThirdAdvancedAssignment.service.UserService;
 
 import javax.validation.Valid;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import sopt.org.ThirdAdvancedAssignment.common.dto.ApiResponseDto;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.response.UserCreateResponseDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.user.UserCreateResponseDto;
 import sopt.org.ThirdAdvancedAssignment.exception.SuccessStatus;
 
 

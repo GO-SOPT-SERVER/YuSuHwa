@@ -1,4 +1,4 @@
-package sopt.org.ThirdAdvancedAssignment.controller.dto.request;
+package sopt.org.ThirdAdvancedAssignment.controller.dto.request.user;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
