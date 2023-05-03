@@ -15,10 +15,10 @@ public class User {
     @Column(name="USER_ID") //pk로 사용되는 칼럼은 이름을 지어준다.
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nickname;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)

@@ -14,7 +14,7 @@ public enum ErrorStatus {
      */
     VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 요청입니다."),
     VALIDATION_REQUEST_MISSING_EXCEPTION(HttpStatus.BAD_REQUEST, "요청값이 입력되지 않았습니다."),
-
+    VALIDATION_REQUEST_UNVALID_USERID(HttpStatus.BAD_REQUEST,"유효한 유저 아이디가 아닙니다."),
 
     /*
     CONFLICT
