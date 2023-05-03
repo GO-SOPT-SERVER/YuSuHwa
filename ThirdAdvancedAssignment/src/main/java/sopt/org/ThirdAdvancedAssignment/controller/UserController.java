@@ -2,10 +2,9 @@ package sopt.org.ThirdAdvancedAssignment.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.request.UserRequestDto;
+import org.springframework.web.bind.annotation.*;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.request.UserCreateRequestDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.UserGetResponseDto;
 import sopt.org.ThirdAdvancedAssignment.service.UserService;
 
 import javax.validation.Valid;
@@ -13,9 +12,8 @@ import javax.validation.Valid;
 
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import sopt.org.ThirdAdvancedAssignment.common.dto.ApiResponseDto;
-import sopt.org.ThirdAdvancedAssignment.controller.dto.response.UserResponseDto;
+import sopt.org.ThirdAdvancedAssignment.controller.dto.response.UserCreateResponseDto;
 import sopt.org.ThirdAdvancedAssignment.exception.SuccessStatus;
 
 
@@ -29,7 +27,14 @@ public class UserController {
 
     @PostMapping("/user/signup")
     @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponseDto<UserResponseDto> create(@RequestBody @Valid final UserRequestDto request) {
+    public ApiResponseDto<UserCreateResponseDto> create(@RequestBody @Valid final UserCreateRequestDto request) {
         return ApiResponseDto.success(SuccessStatus.SIGNUP_SUCCESS, userService.create(request));
     }
+
+    @GetMapping("/user/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponseDto<UserGetResponseDto> getUserById(@PathVariable final Long userId){
+        return ApiResponseDto.success(SuccessStatus.GETUSER_SUCCESS, userService.getUserById(userId));
+    }
+
 }

@@ -12,6 +12,7 @@ public class User {
 
     @Id //이 컬럼이 식별자다
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="USER_ID") //pk로 사용되는 칼럼은 이름을 지어준다.
     private Long id;
 
     @Column(nullable = false)

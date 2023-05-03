@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class UserRequestDto {
+public class UserCreateRequestDto {
 
     @Email(message = "이메일 형식에 맞지 않습니다")
     @NotNull // 기본 이메일 어노테이션은 null 허용
