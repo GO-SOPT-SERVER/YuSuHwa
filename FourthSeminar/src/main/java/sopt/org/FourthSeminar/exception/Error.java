@@ -13,11 +13,14 @@ public enum Error {
      * 400 BAD REQUEST
      */
     REQUEST_VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 요청입니다"),
+    INVALID_MULTIPART_EXTENSION_EXCEPTION(HttpStatus.BAD_REQUEST,"잘못된 multipart 요청입니다."),
 
     /**
      * 404 NOT FOUND
      */
     NOT_FOUND_USER_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 유저입니다"),
+    NOT_FOUND_IMAGE_EXCEPTION(HttpStatus.NOT_FOUND,"이미지가 존재하지 않습니다"),
+    NOT_FOUND_SAVE_IMAGE_EXCEPTION(HttpStatus.NOT_FOUND,"저장할 이미지가 없습니다."),
 
     /**
      * 409 CONFLICT
