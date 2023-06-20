@@ -12,6 +12,7 @@ public interface UserRepository extends Repository<User, Long> {
 
     // READ
     Optional<User> findByEmail(String email);
+    Optional<User> findById(Long id);
     boolean existsByEmail(String email);
 
     // UPDATE
