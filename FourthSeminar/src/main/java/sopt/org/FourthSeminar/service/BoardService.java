@@ -19,7 +19,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public void create(Long userId,BoardRequestDto request) {
+    public void create(Long userId,String boardThumbnailImageUrl, BoardRequestDto request) {
 //        User user = userRepository.findByEmail(request.getEmail())
 //                .orElseThrow(() -> new NotFoundException(Error.NOT_FOUND_USER_EXCEPTION, Error.NOT_FOUND_USER_EXCEPTION.getMessage()));
 
@@ -29,6 +29,7 @@ public class BoardService {
 
         Board newBoard = Board.newInstance(
                 user,
+                boardThumbnailImageUrl,
                 request.getTitle(),
                 request.getContent(),
                 request.getIsPublic()
