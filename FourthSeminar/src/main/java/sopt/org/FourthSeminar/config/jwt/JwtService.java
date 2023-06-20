@@ -25,8 +25,8 @@ public class JwtService {
                 .encodeToString(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 
-    // JWT 토큰 발급
-    public String issuedToken(String userId) {
+    // access JWT 토큰 발급
+    public String issuedAccessToken(Long userId) {
         final Date now = new Date();
 
         // 클레임 생성
@@ -37,6 +37,25 @@ public class JwtService {
 
         //private claim 등록
         claims.put("userId", userId);
+
+        return Jwts.builder()
+                .setHeaderParam(Header.TYPE , Header.JWT_TYPE)
+                .setClaims(claims)
+                .signWith(getSigningKey())
+                .compact();
+    }
+
+    // refresh JWT 토큰 발급
+    public String issuedRefreshToken() {
+        final Date now = new Date();
+
+        // 클레임 생성
+        final Claims claims = Jwts.claims()
+                .setSubject("refresh_token")
+                .setIssuedAt(now)
+                .setExpiration(new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000L));
+
+
 
         return Jwts.builder()
                 .setHeaderParam(Header.TYPE , Header.JWT_TYPE)

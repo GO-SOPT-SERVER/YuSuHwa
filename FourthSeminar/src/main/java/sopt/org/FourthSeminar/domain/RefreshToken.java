@@ -1,13 +1,17 @@
 package sopt.org.FourthSeminar.domain;
 
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import javax.persistence.Id;
 
-@RedisHash(value = "refreshToken", timeToLive = 60)//60초 뒤 데이터 삭제 -> 실무에서는 2주로 생각
+@RedisHash(value = "refreshToken", timeToLive = 60*60*24*14)//14일후 데이터 삭제
 public class RefreshToken {
     @Id
+    private String id;
+    @Indexed
     private String refreshToken;
+
     private Long userId;
 
     public RefreshToken(final String refreshToken, final Long userId){

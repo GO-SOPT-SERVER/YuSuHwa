@@ -38,7 +38,7 @@ public class UserService {
     }
 
     @Transactional
-    public Long login(UserLoginRequestDto request) {
+    public Long login(UserLoginRequestDto request) {//존재하는 유저인지 확인
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new NotFoundException(Error.NOT_FOUND_USER_EXCEPTION, Error.NOT_FOUND_USER_EXCEPTION.getMessage()));
 
