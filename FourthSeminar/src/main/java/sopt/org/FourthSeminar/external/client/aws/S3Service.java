@@ -20,7 +20,9 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -64,6 +66,14 @@ public class S3Service {
         }
     }
 
+    public List<String> uploadImages(List<MultipartFile> multipartFileList, String folder) {
+        // 스스로 실습해봅시다 ㅋㅋ
+        return multipartFileList
+                .stream()
+                .map(multipartFile -> uploadImage(multipartFile, folder)).
+                collect(Collectors.toList());
+    }
+
     // 파일명 (중복 방지)
     private String createFileName(String fileName) {
         return UUID.randomUUID().toString().concat(getFileExtension(fileName));
@@ -86,5 +96,13 @@ public class S3Service {
             throw new BadRequestException(Error.INVALID_MULTIPART_EXTENSION_EXCEPTION, Error.INVALID_MULTIPART_EXTENSION_EXCEPTION.getMessage());
         }
         return fileName.substring(fileName.lastIndexOf("."));
+    }
+
+
+    // 파일삭제
+
+    public void deleteFile(String imageUrl) {
+        String imageKey = imageUrl.substring(56);
+        amazonS3.deleteObject(bucket, imageKey);
     }
 }
