@@ -44,6 +44,7 @@ public class BoardService {
 
         // 이미지 생성
         for (String boardImageUrl: boardImageUrlList) {
+
             imageRepository.save(Image.newInstance(newBoard, boardImageUrl));
         }
     }

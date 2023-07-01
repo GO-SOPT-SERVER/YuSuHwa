@@ -35,6 +35,7 @@ public class BoardController {
 
         //boardService.create(Long.parseLong(jwtService.getJwtContents(accessToken)),request);
         List<String> boardThumbnailImageUrlList = s3Service.uploadImages(request.getBoardImages(), "board");
+        boardThumbnailImageUrlList.forEach(url -> s3Service.deleteFile(url));
         boardService.create(userId, boardThumbnailImageUrlList, request);
         return ApiResponse.success(Success.CREATE_BOARD_SUCCESS);
     }

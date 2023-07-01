@@ -98,4 +98,10 @@ public class S3Service {
         }
         return fileName.substring(fileName.lastIndexOf("."));
     }
+
+    public void deleteFile(String imageUrl) {
+        String imageKey = imageUrl.substring(60); //자신의 버킷 이름을 고려하여, folder부터가 imageKey 시작
+
+        amazonS3.deleteObject(bucket, imageKey);
+    }
 }
