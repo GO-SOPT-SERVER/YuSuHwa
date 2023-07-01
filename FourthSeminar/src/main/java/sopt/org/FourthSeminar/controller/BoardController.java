@@ -35,13 +35,13 @@ public class BoardController {
             @UserId Long userId,
             //@ModelAttribute @Valid final BoardRequestDto request
             @RequestPart BoardRequestPartImageDto request,
-            @RequestPart MultipartFile thumbnail
+            @RequestPart List<MultipartFile> thumbnail
             ) {
 
         System.out.println("컨트롤러에 들어왔니?");
         //boardService.create(Long.parseLong(jwtService.getJwtContents(accessToken)),request);
         //String boardThumbnailImageUrl = s3Service.uploadImage(request.getThumbnail(), "board");
-        List<String> boardThumbnailImageUrlList = s3Service.uploadImages(request.getBoardImages(), "board");
+        List<String> boardThumbnailImageUrlList = s3Service.uploadImages(thumbnail, "board");
 
         //boardService.create(userId, boardThumbnailImageUrl, request);
         boardService.create(userId, boardThumbnailImageUrlList, request);

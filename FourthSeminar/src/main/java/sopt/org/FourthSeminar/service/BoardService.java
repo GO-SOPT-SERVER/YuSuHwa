@@ -27,8 +27,7 @@ public class BoardService {
 
 
     @Transactional
-    public void create(Long userId, String boardThumbnailImageUrl, BoardRequestPartImageDto request) {
-    public void create(Long userId, List<String> boardImageUrlList, BoardImageListRequestDto request) {
+    public void create(Long userId, List<String> boardImageUrlList, BoardRequestPartImageDto request) {
 //        User user = userRepository.findByEmail(request.getEmail())
 //                .orElseThrow(() -> new NotFoundException(Error.NOT_FOUND_USER_EXCEPTION, Error.NOT_FOUND_USER_EXCEPTION.getMessage()));
 
