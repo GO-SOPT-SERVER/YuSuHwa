@@ -11,6 +11,7 @@ import sopt.org.FourthSeminar.config.resolver.UserId;
 import sopt.org.FourthSeminar.controller.dto.request.BoardImageListRequestDto;
 import sopt.org.FourthSeminar.controller.dto.request.BoardRequestDto;
 import sopt.org.FourthSeminar.controller.dto.request.BoardRequestPartImageDto;
+import sopt.org.FourthSeminar.controller.dto.request.BoardRequestPartMultiImage;
 import sopt.org.FourthSeminar.exception.Success;
 import sopt.org.FourthSeminar.external.client.aws.S3Service;
 import sopt.org.FourthSeminar.service.BoardService;
@@ -35,13 +36,15 @@ public class BoardController {
             @UserId Long userId,
             //@ModelAttribute @Valid final BoardRequestDto request
             @RequestPart BoardRequestPartImageDto request,
-            @RequestPart List<MultipartFile> thumbnail
-            ) {
+            //@RequestPart List<MultipartFile> thumbnail,
+            @RequestPart List<MultipartFile> thumbnails
+
+    ) {
 
         System.out.println("컨트롤러에 들어왔니?");
         //boardService.create(Long.parseLong(jwtService.getJwtContents(accessToken)),request);
         //String boardThumbnailImageUrl = s3Service.uploadImage(request.getThumbnail(), "board");
-        List<String> boardThumbnailImageUrlList = s3Service.uploadImages(thumbnail, "board");
+        List<String> boardThumbnailImageUrlList = s3Service.uploadImages(thumbnails, "board");
 
         //boardService.create(userId, boardThumbnailImageUrl, request);
         boardService.create(userId, boardThumbnailImageUrlList, request);

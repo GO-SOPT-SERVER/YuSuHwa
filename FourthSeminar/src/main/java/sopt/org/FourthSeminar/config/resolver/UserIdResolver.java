@@ -36,6 +36,7 @@ public class UserIdResolver implements HandlerMethodArgumentResolver {
                 .forEachRemaining(paramName -> System.out.println(paramName +
                         "=" + request.getParameter(paramName)));
 
+        request.getParameter("thumbnail");
         System.out.println("---------------------------------------");
         final String token = request.getHeader("Authorization");
 
