@@ -28,7 +28,8 @@ public class BoardController {
     public ApiResponse create(
             //@RequestHeader("Authorization") String accessToken,
             @UserId Long userId,
-            @ModelAttribute @Valid final BoardRequestDto request) {
+            @ModelAttribute @Valid final BoardRequestDto request
+    ) {
 
         //boardService.create(Long.parseLong(jwtService.getJwtContents(accessToken)),request);
         String boardThumbnailImageUrl = s3Service.uploadImage(request.getThumbnail(), "board");

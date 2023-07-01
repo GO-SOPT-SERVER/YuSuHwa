@@ -27,6 +27,15 @@ public class UserIdResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(@NotNull MethodParameter parameter, ModelAndViewContainer modelAndViewContainer, @NotNull NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         final HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
+
+        System.out.println("---------------------------------------");
+        System.out.println(request);
+        request.getParameterNames().asIterator()
+                .forEachRemaining(paramName -> System.out.println(paramName +
+                        "=" + request.getParameter(paramName)));
+
+        System.out.println("---------------------------------------");
+
         final String token = request.getHeader("Authorization");
 
         // 토큰 검증
