@@ -20,6 +20,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -62,6 +63,16 @@ public class S3Service {
         } catch(IOException e) {
             throw new NotFoundException(Error.NOT_FOUND_SAVE_IMAGE_EXCEPTION, Error.NOT_FOUND_SAVE_IMAGE_EXCEPTION.getMessage());
         }
+    }
+
+    public List<String> uploadImages(List<MultipartFile> multipartFileList, String folder) {
+        List<String> imageURLs = new ArrayList<>();
+
+        for (MultipartFile multipartFile :multipartFileList) {
+            imageURLs.add(uploadImage(multipartFile,folder));
+
+        }
+        return  imageURLs;
     }
 
     // 파일명 (중복 방지)
