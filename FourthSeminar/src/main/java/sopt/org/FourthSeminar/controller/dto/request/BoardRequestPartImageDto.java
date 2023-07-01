@@ -10,12 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BoardRequestDto {
-
-    //@Email(message = "이메일 형식에 맞지 않습니다")
-    //private String email;
-    @NotNull
-    private MultipartFile thumbnail;
+public class BoardRequestPartImageDto {
 
     @NotBlank
     private String title;

@@ -26,13 +26,24 @@ public class UserIdResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public Object resolveArgument(@NotNull MethodParameter parameter, ModelAndViewContainer modelAndViewContainer, @NotNull NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
+
         final HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
+
+
+        System.out.println("---------------------------------------");
+        System.out.println(request);
+        request.getParameterNames().asIterator()
+                .forEachRemaining(paramName -> System.out.println(paramName +
+                        "=" + request.getParameter(paramName)));
+
+        System.out.println("---------------------------------------");
         final String token = request.getHeader("Authorization");
 
         // 토큰 검증
         if (!jwtService.verifyToken(token)) {
             throw new RuntimeException(String.format("USER_ID를 가져오지 못했습니다. (%s - %s)", parameter.getClass(), parameter.getMethod()));
         }
+
 
         // 유저 아이디 반환
         final String tokenContents = jwtService.getJwtContents(token);
@@ -41,5 +52,7 @@ public class UserIdResolver implements HandlerMethodArgumentResolver {
         } catch (NumberFormatException e) {
             throw new RuntimeException(String.format("USER_ID를 가져오지 못했습니다. (%s - %s)", parameter.getClass(), parameter.getMethod()));
         }
+
+
     }
 }

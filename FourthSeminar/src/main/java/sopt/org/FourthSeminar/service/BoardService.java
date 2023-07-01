@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sopt.org.FourthSeminar.controller.dto.request.BoardRequestDto;
+import sopt.org.FourthSeminar.controller.dto.request.BoardRequestPartImageDto;
 import sopt.org.FourthSeminar.domain.Board;
 import sopt.org.FourthSeminar.domain.User;
 import sopt.org.FourthSeminar.exception.Error;
@@ -19,7 +20,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public void create(Long userId,String boardThumbnailImageUrl, BoardRequestDto request) {
+    public void create(Long userId, String boardThumbnailImageUrl, BoardRequestPartImageDto request) {
 //        User user = userRepository.findByEmail(request.getEmail())
 //                .orElseThrow(() -> new NotFoundException(Error.NOT_FOUND_USER_EXCEPTION, Error.NOT_FOUND_USER_EXCEPTION.getMessage()));
 
